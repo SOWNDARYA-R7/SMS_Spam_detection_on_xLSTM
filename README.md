@@ -158,7 +158,7 @@ Spam is treated as the positive class when calculating Precision, Recall, and F1
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/SOWNDARYA-R7/YOUR_REPOSITORY.git
+git clone https://github.com/SOWNDARYA-R7/SMS_Spam_detection_on_xLSTM.git
 ```
 
 ### 2. Navigate to the Project Directory
