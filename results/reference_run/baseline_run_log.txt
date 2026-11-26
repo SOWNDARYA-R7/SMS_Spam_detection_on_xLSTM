@@ -1,0 +1,59 @@
+========================================================================
+SMS SPAM EXPERIMENT: ALL MODELS ON ONE FIXED TRAIN/TEST SPLIT
+========================================================================
+Dataset file         : /mnt/data/spam.csv
+Valid records used   : 5570
+Invalid/blank dropped: 2
+Exact duplicate pairs (reported, not auto-removed): 441
+Training records     : 4456
+Testing records      : 1114
+Split                : stratified 80/20, random_state=42
+Label definition     : Ham=0, Spam=1
+Reported precision, recall, F1 are for the Spam class.
+Train distribution   : {0: 3858, 1: 598}
+Test distribution    : {0: 965, 1: 149}
+
+[xLSTM] SKIPPED in this environment: could not import your model.py / xlstm package.
+  Import detail: ModuleNotFoundError: No module named 'model'
+  On your project computer, install/use the same xlstm environment and rerun this script.
+
+[LSTM] training for 5 epochs on CPU
+  Epoch 1/5: loss=0.2568
+  Epoch 2/5: loss=0.0713
+  Epoch 3/5: loss=0.0306
+  Epoch 4/5: loss=0.0219
+  Epoch 5/5: loss=0.0196
+
+[Bi-LSTM] training for 5 epochs on CPU
+  Epoch 1/5: loss=0.2318
+  Epoch 2/5: loss=0.0577
+  Epoch 3/5: loss=0.0149
+  Epoch 4/5: loss=0.0040
+  Epoch 5/5: loss=0.0086
+
+[GRU] training for 5 epochs on CPU
+  Epoch 1/5: loss=0.2252
+  Epoch 2/5: loss=0.0624
+  Epoch 3/5: loss=0.0270
+  Epoch 4/5: loss=0.0099
+  Epoch 5/5: loss=0.0033
+
+[TF-IDF] fitting vocabulary on training text only
+[TF-IDF + SVM] training
+[XGBoost] training
+
+==========================================================================================
+MEASURED RESULTS (same data split; not values copied from papers)
+==========================================================================================
+       Model  Accuracy (%)  Precision (spam)  Recall (spam)  F1-score (spam)
+        LSTM         97.85            0.9771         0.8591           0.9143
+     Bi-LSTM         97.31            0.9542         0.8389           0.8929
+         GRU         97.67            0.9767         0.8456           0.9065
+TF-IDF + SVM         98.38            0.9712         0.9060           0.9375
+     XGBoost         96.23            1.0000         0.7181           0.8359
+
+Saved metrics CSV: /mnt/data/results_spam_csv/model_metrics.csv
+Individual confusion matrices: /mnt/data/results_spam_csv/confusion_matrices
+Combined confusion matrices: /mnt/data/results_spam_csv/all_confusion_matrices.png
+
+Experiment complete.

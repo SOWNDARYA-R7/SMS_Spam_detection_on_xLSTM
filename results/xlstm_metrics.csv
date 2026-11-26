@@ -1,0 +1,2 @@
+Model,Accuracy (%),Precision (spam),Recall (spam),F1-score (spam)
+xLSTM (proposed),94.7,0.7419,0.9262,0.8239

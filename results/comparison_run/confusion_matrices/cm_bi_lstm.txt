@@ -1,0 +1,12 @@
+Rows=true labels [Ham, Spam]; columns=predicted [Ham, Spam]
+[[959   6]
+ [ 24 125]]
+
+              precision    recall  f1-score   support
+
+         Ham       0.98      0.99      0.98       965
+        Spam       0.95      0.84      0.89       149
+
+    accuracy                           0.97      1114
+   macro avg       0.96      0.92      0.94      1114
+weighted avg       0.97      0.97      0.97      1114

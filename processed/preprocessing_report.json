@@ -1,0 +1,23 @@
+{
+  "input_file": "C:\\Users\\Sowndarya\\Downloads\\SMS_Spam_xLSTM_Complete_Project\\SMS_Spam_xLSTM_Complete_Project\\dataset\\spam.csv",
+  "raw_rows_read": 5572,
+  "valid_rows_used": 5570,
+  "invalid_or_blank_rows_dropped": 2,
+  "repeated_label_message_pairs_reported_not_removed": 441,
+  "train_test_split": "stratified 80/20",
+  "random_state": 42,
+  "label_mapping": {
+    "ham": 0,
+    "spam": 1
+  },
+  "training_rows": 4456,
+  "testing_rows": 1114,
+  "training_label_counts": {
+    "0": 3858,
+    "1": 598
+  },
+  "testing_label_counts": {
+    "0": 965,
+    "1": 149
+  }
+}

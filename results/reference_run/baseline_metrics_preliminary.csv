@@ -1,0 +1,6 @@
+Model,Accuracy (%),Precision (spam),Recall (spam),F1-score (spam)
+LSTM,97.85,0.9771,0.8591,0.9143
+Bi-LSTM,97.31,0.9542,0.8389,0.8929
+GRU,97.67,0.9767,0.8456,0.9065
+TF-IDF + SVM,98.38,0.9712,0.906,0.9375
+XGBoost,96.23,1.0,0.7181,0.8359
