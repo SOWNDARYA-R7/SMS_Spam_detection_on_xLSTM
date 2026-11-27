@@ -183,6 +183,12 @@
   align-items: center;
   gap: 6px;
   overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dashboard-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-tab-btn {
@@ -199,6 +205,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-tab-btn:hover {
@@ -1013,6 +1020,7 @@
   justify-content: space-between;
   margin-top: 16px;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .batch-line-count {
@@ -1022,7 +1030,7 @@
 
 .batch-submit-row .analyze-button {
   width: auto;
-  min-width: 240px;
+  max-width: 100%;
 }
 
 /* KPI Cards Grid */
@@ -1983,54 +1991,351 @@ tbody tr:hover {
 }
 
 @media (max-width: 768px) {
+  .dashboard-main-content {
+    padding: 16px 12px 40px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .header-top {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 12px 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-group {
+    gap: 10px;
+  }
+
+  .brand-icon-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-text h1 {
+    font-size: 17px;
+  }
+
+  .brand-text p {
+    display: none;
   }
 
   .header-telemetry {
-    width: 100%;
-    justify-content: space-between;
-    overflow-x: auto;
+    gap: 6px;
+  }
+
+  .telemetry-pill {
+    padding: 4px 8px;
+    font-size: 11px;
   }
 
   .architecture-pill {
     display: none;
   }
 
-  .meta-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .dashboard-nav {
+    padding: 0 12px;
+    gap: 4px;
   }
 
-  .hyperparams-grid {
-    grid-template-columns: 1fr;
+  .nav-tab-btn {
+    padding: 10px 10px;
+    font-size: 12px;
+    gap: 5px;
   }
 
-  .blocks-grid {
-    grid-template-columns: 1fr;
+  .section-header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .section-header-row h2,
+  .inspector-hero h2 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .section-header-row p,
+  .inspector-hero p {
+    font-size: 13px;
+  }
+
+  .batch-actions,
+  .history-top-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .batch-actions .secondary-btn,
+  .history-top-actions .secondary-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 9px 12px;
+  }
+
+  .batch-input-card,
+  .inspector-card,
+  .chart-card,
+  .bench-card,
+  .pipeline-card,
+  .hyperparams-card,
+  .mechanism-card,
+  .block-card {
+    padding: 16px;
+  }
+
+  .batch-submit-row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .batch-submit-row .analyze-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 12px;
+  }
+
+  .batch-line-count {
+    text-align: center;
   }
 
   .batch-stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .kpi-card {
+    padding: 12px 14px;
+  }
+
+  .kpi-value {
+    font-size: 22px;
   }
 
   .table-controls-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
+  .filter-button-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    width: 100%;
+  }
+
+  .filter-btn {
+    padding: 8px 4px;
+    font-size: 11px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .table-right-tools {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .search-input-wrap,
   .search-input-wrap input {
     width: 100%;
   }
 
-  .history-row {
+  .export-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 9px;
+  }
+
+  .inspector-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .preset-strip {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .preset-buttons {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .preset-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
+  .preset-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .textarea-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 8px 12px;
+  }
+
+  .hotkey-hint {
+    display: none;
+  }
+
+  .verdict-banner {
+    flex-direction: column;
     gap: 12px;
+    padding: 14px;
+  }
+
+  .verdict-title-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .verdict-title-row h2 {
+    font-size: 18px;
+  }
+
+  .meta-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .meta-card {
+    padding: 8px 10px;
+  }
+
+  .metric-selector-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .selector-buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .metric-tab {
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    padding: 8px 4px;
+  }
+
+  .chart-bar-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .bar-track-wrap {
+    height: 28px;
+    width: 100%;
+  }
+
+  .benchmark-details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .matrix-grid-2x2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .matrix-cell {
+    padding: 10px;
+  }
+
+  .cell-count {
+    font-size: 20px;
+  }
+
+  .pipeline-flow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .pipeline-node {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .pipeline-connector {
+    transform: rotate(90deg);
+    margin: 2px auto;
+  }
+
+  .mechanisms-grid,
+  .blocks-grid,
+  .hyperparams-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .history-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .history-stat-chip {
+    padding: 6px 8px;
+    font-size: 11px;
+    justify-content: center;
+  }
+
+  .history-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .history-left {
+    width: 100%;
+    justify-content: space-between;
+    min-width: 0;
   }
 
   .history-right {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .footer-left,
+  .footer-right {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .footer-sep {
+    display: none;
   }
 }
