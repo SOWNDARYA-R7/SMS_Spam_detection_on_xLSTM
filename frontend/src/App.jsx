@@ -8,6 +8,9 @@ import AuditHistory from './components/AuditHistory';
 import './App.css';
 
 export default function App() {
+  const API_URL = (
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+).replace(/\/+$/, '');
   const [activeTab, setActiveTab] = useState('inspector');
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('xlstm_theme') || 'dark';
@@ -35,7 +38,7 @@ export default function App() {
     const checkHealth = async () => {
       const start = performance.now();
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/health');
+        const res = await fetch(`${API_URL}/api/health`);
         if (res.ok) {
           const elapsed = Math.round(performance.now() - start);
           if (isMounted) {
@@ -44,7 +47,7 @@ export default function App() {
           }
         } else {
           // Check fallback /
-          const fallbackRes = await fetch('http://127.0.0.1:8000/');
+          const fallbackRes = await fetch(`${API_URL}`);
           if (fallbackRes.ok && isMounted) {
             setApiStatus('connected');
             setLatency(Math.round(performance.now() - start));
@@ -65,7 +68,7 @@ export default function App() {
       isMounted = false;
       clearInterval(interval);
     };
-  }, []);
+  }, [API_URL]);
 
   // Save audit history to local storage
   const handleScanComplete = (scanRecord) => {

@@ -57,7 +57,9 @@ export default function BatchScanner({ onScanComplete }) {
 
     try {
       // First attempt fast /api/predict/batch endpoint
-      const response = await fetch('http://127.0.0.1:8000/api/predict/batch', {
+      const API_URL = import.meta.env.VITE_API_URL;
+
+        const response = await fetch(`${API_URL}/api/predict/batch`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: lines })
@@ -85,7 +87,7 @@ export default function BatchScanner({ onScanComplete }) {
       } else {
         // Fallback to parallel individual calls
         const promises = lines.map(async (msg, index) => {
-          const res = await fetch('http://127.0.0.1:8000/predict', {
+          const res = await fetch(`${API_URL}/predict`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: msg })
